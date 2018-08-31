@@ -48,6 +48,7 @@
 		3C7A0F5A21394F9E00029B80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C7A0F6621394FBE00029B80 /* CRC Calculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRC Calculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		3C7A0F6721394FBF00029B80 /* crc8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = crc8.m; sourceTree = "<group>"; };
+		748AF7CD21398F0D00BD0DAC /* CRC Calculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CRC Calculator.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +99,7 @@
 		3C7A0F3A21394F9D00029B80 /* CRC Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				748AF7CD21398F0D00BD0DAC /* CRC Calculator.entitlements */,
 				3C7A0F3B21394F9D00029B80 /* AppDelegate.swift */,
 				3C7A0F6721394FBF00029B80 /* crc8.m */,
 				3C7A0F3D21394F9D00029B80 /* ViewController.swift */,
@@ -195,8 +197,17 @@
 				TargetAttributes = {
 					3C7A0F3721394F9D00029B80 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7TD9A665TC;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					3C7A0F4821394F9E00029B80 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -405,7 +416,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "CRC Calculator/CRC Calculator.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7TD9A665TC;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "CRC Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dPro.CRC-Calculator";
@@ -421,7 +436,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "CRC Calculator/CRC Calculator.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 7TD9A665TC;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "CRC Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dPro.CRC-Calculator";
@@ -508,6 +527,7 @@
 				3C7A0F5F21394F9E00029B80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C7A0F6021394F9E00029B80 /* Build configuration list for PBXNativeTarget "CRC CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +536,7 @@
 				3C7A0F6221394F9E00029B80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C7A0F6321394F9E00029B80 /* Build configuration list for PBXNativeTarget "CRC CalculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +545,7 @@
 				3C7A0F6521394F9E00029B80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
