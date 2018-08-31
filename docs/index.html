@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>CRC Calculator</title>
+		<style>
+			html {
+				font-family: -apple-system
+			}
+		</style>
+	</head>
+
+	<body>
+		Bytes:
+		<script type="text/javascript">
+			const input = document.createElement('input')
+			const inputMonitor = document.createElement('p')
+			const crcMonitor = document.createElement('p')
+
+			input.value = "1, 2"
+			updateMonitors()
+			input.addEventListener('input', updateMonitors)
+			document.body.appendChild(input)
+			document.body.appendChild(inputMonitor)
+			document.body.appendChild(crcMonitor)
+
+			function updateMonitors() {
+				const inputText = input.value
+				const byteArray = eval(`[${input.value}]`)
+				const hexArray = byteArray.map(number => `0x${number.toString(16).toUpperCase()}`).join(', ')
+				inputMonitor.textContent = `Interpreted bytes: ${hexArray}`
+				crcMonitor.textContent = `CRC: 0x${ crc8(byteArray).toString(16).toUpperCase() }`
+			}
+
+			function crc8(data) {
+				var polynom = 0x1d;		// x8 + x4 + x3 + x2 + 1 = 110001101
+				var crc = 0xC7;			// start value 0xE3 mirrored is 0xC7
+				
+				for (var i = 0; i < data.length; i++) {
+					crc ^= data[i];
+					for (var b = 0; b < 8; b++) {
+						var msb = crc & 0x80;
+						crc = (crc << 1) & 0xFF;
+						if (msb) {
+							crc ^= polynom;
+						}
+					}
+				}
+				return crc;
+			}
+		</script>
+	</body>	
+</html>
