@@ -10,7 +10,7 @@ import Cocoa
 
 class ViewController: NSViewController, NSTokenFieldDelegate {
 	@IBOutlet var tokenField: NSTokenField!
-	dynamic var crc = "none"
+	@objc dynamic var crc = "none"
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -18,12 +18,12 @@ class ViewController: NSViewController, NSTokenFieldDelegate {
 	}
 	
 	func tokenField(_ tokenField: NSTokenField, shouldAdd tokens: [Any], at index: Int) -> [Any] {
-		return tokens.flatMap { UInt8(($0 as! String).replacingOccurrences(of: "0x", with: ""), radix: 16) }
+		return tokens.compactMap { UInt8(($0 as! String).replacingOccurrences(of: "0x", with: ""), radix: 16) }
 	}
 	
 	func tokenField(_ tokenField: NSTokenField, displayStringForRepresentedObject representedObject: Any) -> String? {
 		let hex = String(representedObject as? UInt8 ?? 0, radix: 16)
-		if hex.characters.count == 1 {
+		if hex.count == 1 {
 			return "0" + hex
 		} else {
 			return hex
